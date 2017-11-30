@@ -29,7 +29,12 @@ export class RegistroComponent implements OnInit {
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService, private router: Router) { }
   ngOnInit() { }
-  RegristoRespuesta(response: object) {
+
+  registro() {
+    this.usuarioService.registro(this.nombre, this.password, this.regristoRespuesta.bind(this));
+  }
+
+  regristoRespuesta(response: object) {
     this.router.navigate(['']);
   }
 
@@ -50,24 +55,11 @@ export class RegistroComponent implements OnInit {
     if (this.password !== '' && this.password2 !== '') {
       if (this.password === this.password2) {
         this.passwordClass = 'form-control  ng-valid';
-        this.formCorrecto = true;
         this.passwordMensaje = '';
       } else {
         this.passwordClass = 'form-control  ng-invalid'; // No funciona
-        this.formCorrecto = false;
         this.passwordMensaje = 'Las contraseñas no coinciden';
       }
     }
   }
-
-  onSubmit() {
-    if (this.formCorrecto) {
-      this.http.post('http://localhost:57989/api/registro', {
-        'password': this.password,
-        'Nombre': this.nombre
-      })
-        .subscribe((response) => this.RegristoRespuesta(response));
-    }
-  }
-
 }

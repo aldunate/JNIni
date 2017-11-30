@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from '../usuario/service/token.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public logueado = false;
+  constructor(private tokenService: TokenService) {
+    this.auth();
+  }
+
+  auth() {
+    this.tokenService.leer();
+    if (this.tokenService.token === undefined) {
+      this.logueado = false;
+    } else {
+      this.logueado = true;
+    }
+  }
 
   ngOnInit() {
   }
+
+
 
 }

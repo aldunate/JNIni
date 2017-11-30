@@ -7,14 +7,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
-import { RegistroComponent } from './registro/registro.component';
+import { RegistroComponent } from './usuario/registro/registro.component';
 import { Route } from './app.route';
 import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
-import { UsuarioService } from './service/usuario.service';
-import { TokenInterceptor } from './service/token.interceptor';
-import { AuthService } from './service/auth.service';
+import { LoginComponent } from './usuario/login/login.component';
+import { UsuarioService } from './usuario/service/usuario.service';
+import { TokenInterceptor } from './usuario/service/token.interceptor';
+import { AuthService } from './usuario/service/auth.service';
+import { TokenService } from './usuario/service/token.service';
 
 
 
@@ -31,7 +32,7 @@ import { AuthService } from './service/auth.service';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }, TokenInterceptor, AuthService],
+  }, TokenInterceptor, AuthService, TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

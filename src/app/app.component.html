@@ -13,18 +13,19 @@
                 <li>
                     <a routerLink="main">Home</a>
                 </li>
-                <li>
-                    <a routerLink="registro">Registro</a>
-                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li *ngIf="!logueado">
                     <a routerLink="registro">
                         <span class="glyphicon glyphicon-user"></span> Registrarse</a>
                 </li>
-                <li>
+                <li *ngIf="!logueado">
                     <a routerLink="login">
                         <span class="glyphicon glyphicon-log-in"></span>Entrar</a>
+                </li>
+                <li *ngIf="logueado">
+                    <a type="button" (click)="logout()" >
+                        <span class="glyphicon glyphicon-log-in"></span>Cerrar sesión</a>
                 </li>
             </ul>
         </div>

@@ -3,14 +3,14 @@
   <div>
     <div class="form-group">
       <label for="nombre">Usuario</label>
-      <input [(ngModel)]= "usuario.nombre" type="text" [class]="usuarioClass"  required>
+      <input [(ngModel)]= "nombre" type="text" [class]="usuarioClass"  required>
     </div>
     {{usuarioMensaje}}
     <div class="form-group">
       <label for="password">Password</label>
-      <input [(ngModel)]= "usuario.password" type="password" [class]="passwordClass" required>
+      <input [(ngModel)]= "password" type="password" [class]="passwordClass" required>
     </div>
     <div>{{passwordMensaje}}</div>
-    <button type="submit" (click)="onSubmit()" class="btn btn-success" >Registrarse</button>
+    <button type="submit" (click)="login()" class="btn btn-success" >Entrar</button>
   </div>
 </div>  

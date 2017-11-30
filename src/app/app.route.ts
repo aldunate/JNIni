@@ -1,9 +1,9 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegistroComponent } from './registro/registro.component';
+import { RegistroComponent } from './usuario/registro/registro.component';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './usuario/login/login.component';
 
 
 
