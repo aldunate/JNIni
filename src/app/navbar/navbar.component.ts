@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TokenService } from '../usuario/service/token.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-navbar',
@@ -7,24 +8,39 @@ import { TokenService } from '../usuario/service/token.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  // logueado: any;
 
-  public logueado = false;
-  constructor(private tokenService: TokenService) {
-    this.auth();
+  // @Input() public logueadoChild;
+  constructor(private tokenService: TokenService, private appComp: AppComponent) {
+    // this.tokenService.logueado
+
+    /*subscribe((logueado) => {
+      this.logueado = logueado;
+    });*/
   }
 
-  auth() {
+  /*ngOnDestroy() {
+    //prevent memory leak when component destroyed
+    this._subscription.unsubscribe();
+  }*/
+
+  /*auth() {
     this.tokenService.leer();
     if (this.tokenService.token === undefined) {
-      this.logueado = false;
+      this.logueadoChild = false;
     } else {
-      this.logueado = true;
+      this.logueadoChild = true;
     }
-  }
+  }*/
 
-  ngOnInit() {
+  logout() {
+    this.appComp.logout();
   }
-
+  ngOnInit() { }
 
 
 }
+
+
+
+

@@ -24,7 +24,7 @@
                         <span class="glyphicon glyphicon-log-in"></span>Entrar</a>
                 </li>
                 <li *ngIf="logueado">
-                    <a routerLink="login">
+                    <a type="button" (click)="logout()" >
                         <span class="glyphicon glyphicon-log-in"></span>Cerrar sesión</a>
                 </li>
             </ul>

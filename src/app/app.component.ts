@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { TokenService } from './usuario/service/token.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +9,17 @@ import { TokenService } from './usuario/service/token.service';
 })
 
 export class AppComponent implements OnInit {
-
-  @Output() public logueado = false;
+  public _subscription: any;
+  public logueado = false;
   constructor(private tokenService: TokenService) {
-    this.auth();
-  }
-
-  auth() {
     this.tokenService.leer();
-    if (this.tokenService.token === undefined) {
-      this.logueado = false;
-    } else {
-      this.logueado = true;
-    }
+    this._subscription = tokenService.onLoguin.subscribe((value) => {
+      this.logueado = value;
+    });
   }
 
   logout() {
     this.tokenService.remove();
-    this.auth();
   }
 
   ngOnInit() {

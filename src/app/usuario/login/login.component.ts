@@ -28,12 +28,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.usuarioService.login(this.nombre, this.password, this.loginRespuesta.bind(this));
-    // private navbarComponent: NavbarComponent, this.navbarComponent.auth();
   }
 
   loginRespuesta(token: any) {
     this.tokenService.create(token);
-    this.appComp.auth();
     this.password = '';
     this.router.navigate(['/']);
   }
